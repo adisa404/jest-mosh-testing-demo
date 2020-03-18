@@ -1,29 +1,18 @@
-# README #
+# install jest
 
-This README would normally document whatever steps are necessary to get your application up and running.
+npm i jest --save-dev
 
-### What is this repository for? ###
+# run test
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+npm test
 
-### How do I get set up? ###
+```json
+  "scripts": {
+    "test": "jest"
+  },
+```
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+# naming
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+any file with that maches this name is a testfile
+testMatch: **/**tests**/**/_.[jt]s?(x), \*\*/?(_.)+(spec|test).[tj]s?(x)
