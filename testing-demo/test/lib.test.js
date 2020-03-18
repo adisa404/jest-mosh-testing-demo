@@ -35,6 +35,7 @@ describe('greet', () => {
     expect(message).toBe('Welcome Adisa');
   });
 
+  // test if a string is similar
   it('should return an almost exact greeting message', () => {
     const message = lib.greet('Adisa');
 
@@ -43,4 +44,19 @@ describe('greet', () => {
   });
 });
 
-// test if a string is similar
+// when testing arrays don't test for index
+describe('getCurrencies', () => {
+  it('should return supported currencies', () => {
+    let result = lib.getCurrencies();
+
+    expect(result).toContain('USD');
+    expect(result).toContain('AUD');
+    expect(result).toContain('EUR');
+  });
+
+  it('should return supported currencies - with arrayContaining', () => {
+    let result = lib.getCurrencies();
+
+    expect(result).toEqual(expect.arrayContaining(['USD', 'AUD', 'EUR'])); // order doesn't matter
+  });
+});
