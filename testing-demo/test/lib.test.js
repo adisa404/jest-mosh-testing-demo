@@ -71,3 +71,19 @@ describe('getProduct', () => {
     expect(product).toHaveProperty('id', 1);
   });
 });
+
+describe('registerUser', () => {
+  it('should throw if username is falsy', () => {
+    //You must wrap the code in a function, otherwise the error will not be caught and the assertion will fail
+    expect(() => lib.registerUser('')).toThrow(
+      new Error('Username is required.')
+    );
+  });
+
+  it('should return object if username is truthy', () => {
+    const result = lib.registerUser('adisa');
+    expect(result).toMatchObject({
+      username: 'adisa'
+    });
+  });
+});
