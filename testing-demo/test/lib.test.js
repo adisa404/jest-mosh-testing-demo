@@ -60,3 +60,14 @@ describe('getCurrencies', () => {
     expect(result).toEqual(expect.arrayContaining(['USD', 'AUD', 'EUR'])); // order doesn't matter
   });
 });
+
+describe('getProduct', () => {
+  it('should return the same object', () => {
+    const product = lib.getProduct(1);
+
+    //expect(product).toEqual({ id: 1, price: 10 });
+
+    expect(product).toMatchObject({ id: 1 }); // will pass since it doesn't chek all props
+    expect(product).toHaveProperty('id', 1);
+  });
+});
