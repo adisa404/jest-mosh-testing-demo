@@ -12,7 +12,12 @@ npm test
   },
 ```
 
-# naming
+# naming match
 
 any file with that maches this name is a testfile
 testMatch: **/**tests**/**/_.[jt]s?(x), \*\*/?(_.)+(spec|test).[tj]s?(x)
+
+# naming convention
+
+`[module to test].test.js`
+example: `lib.test.js`
