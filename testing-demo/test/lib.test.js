@@ -1,4 +1,5 @@
 const lib = require('../lib.js');
+const db = require('../db.js');
 
 test('our first test', () => {});
 
@@ -85,5 +86,17 @@ describe('registerUser', () => {
     expect(result).toMatchObject({
       username: 'adisa'
     });
+  });
+});
+
+describe('applyDiscount', () => {
+  it('should apply a 10% discount to the price', () => {
+    db.getCustomerSync = function(customerId) {
+      return { id: customerId, points: 11 };
+    };
+
+    const order = { customerId: 1, totalPrice: 10 };
+    lib.applyDiscount(order);
+    expect(order.totalPrice).toBe(9);
   });
 });
