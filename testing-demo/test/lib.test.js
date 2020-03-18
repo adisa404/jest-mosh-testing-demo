@@ -1,5 +1,6 @@
 const lib = require('../lib.js');
 const db = require('../db.js');
+const mail = require('../mail.js');
 
 test('our first test', () => {});
 
@@ -98,5 +99,21 @@ describe('applyDiscount', () => {
     const order = { customerId: 1, totalPrice: 10 };
     lib.applyDiscount(order);
     expect(order.totalPrice).toBe(9);
+  });
+});
+
+describe('notifyCustomer', () => {
+  it('should send an email to the customer', () => {
+    db.getCustomerSync = function(customerId) {
+      return { email: 'a' };
+    };
+
+    let isSent = false;
+    mail.send = function(to, subject) {
+      isSent = true;
+    };
+
+    lib.notifyCustomer({ customerId: 1 });
+    expect(isSent).toBe(true);
   });
 });
